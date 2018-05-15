@@ -1,0 +1,40 @@
+<div class="jumbotron">
+
+  <form invalidate [formGroup]="form" (ngSubmit)="addSubject(form)">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input formControlName="name" type="text" class="form-control">
+    </div>
+    <div *ngIf="form.get('name').invalid && form.get('name').touched" class="alert alert-danger">
+      <div *ngIf="form.get('name').hasError('required')">
+        Name is required
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="subjectSelect">Subject:</label>
+      <select (change)="selectCourse($event)" class="form-control" name="courseId">
+        <option value="">--Select Course--</option>
+        <option *ngFor="let course of courses" name="courseId" [value]="course.id">{{course.name}}</option>
+      </select>
+    </div>
+    <button type="submit" [disabled]="form.invalid" class="btn btn-success">Add Subject</button>
+    <!-- Button is disabled till the input is invalid -->
+  </form>
+  <div class="row" style="margin-left: 70px">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Subject Name</th>
+          <th>Subject Course</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let subject of subjects">
+          <td>{{subject.name}}</td>
+          <td>{{subject.course.name}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

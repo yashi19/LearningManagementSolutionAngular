@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="jumbotron">
+    <h2>Add Batch</h2>
+    <form invalidate [formGroup]="form" (ngSubmit)="addBatch(form)">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input formControlName="name" type="text" class="form-control" placeholder="Batch Name">
+      </div>
+      <div *ngIf="form.get('name').invalid && form.get('name').touched" class="alert alert-danger">
+        <div *ngIf="form.get('name').hasError('required')">
+          Name is required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="startDate">Start Date</label>
+        <input formControlName="startDate" type="date" class="form-control" placeholder="YYYY-MM-DD">
+      </div>
+
+      <div *ngIf="form.get('startDate').invalid && form.get('startDate').touched" class="alert alert-danger">
+        <div *ngIf="form.get('startDate').hasError('required')">
+          date is required
+        </div>
+      </div>
+
+      <button type="submit" [disabled]="form.invalid" class="btn btn-success">Add Batch</button>
+      <!-- Button is disabled till the input is invalid -->
+    </form>
+  </div>
+  <div class="row" id="batchesListing" style="margin-left: 70px">
+    <div class="card" style="width: 18rem;margin: 5px;" *ngFor="let batch of batches">
+      <div class="card text-center">
+        <div class="card-header">
+          <h5 class="card-title">{{batch.name}}</h5>
+
+        </div>
+        <a routerLink='/courses/{{batch.courseId}}/batches/{{batch.id}}/lectures' class="btn btn-info" role="button"> Lectures</a>
+         <!-- <a routerLink='/batch/{{batch.courseId}}/students' class="btn btn-info" role="button">Show Lectures</a> -->
+      </div>
+    </div>
+  </div>
+</div>

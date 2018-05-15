@@ -1,0 +1,22 @@
+<div class="container">
+
+    <div class="jumbotron">
+
+        <h2>Upcomming Batches</h2>
+    </div>
+
+  <div class="row" id="batchesListing" style="margin-left: 70px">
+
+    <div class="card" style="width: 18rem;margin: 5px;" *ngFor="let batch of batches">
+      <div class="card text-center">
+        <div class="card-header">
+          <h5 class="card-title">{{batch.name}}</h5>
+
+        </div>
+
+        <h6 class="card-subtitle mb-2 text-muted" style="margin:5px">{{batch.startDate | date }}</h6>
+
+      </div>
+    </div>
+  </div>
+</div>

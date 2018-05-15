@@ -1,0 +1,33 @@
+<div class="jumbotron">
+  <h2>Add Student</h2>
+  <form invalidate [formGroup]="form" (ngSubmit)="addStudent(form)">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input formControlName="name" type="text" class="form-control">
+    </div>
+    <div *ngIf="form.get('name').invalid && form.get('name').touched" class="alert alert-danger">
+      <div *ngIf="form.get('name').hasError('required')">
+        Name is required
+      </div>
+    </div>
+    <button type="submit" [disabled]="form.invalid" class="btn btn-success">Add Student</button>
+    <!-- Button is disabled till the input is invalid -->
+  </form>
+</div>
+
+<div class="row" >
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Student Name</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let student of students">
+        <td>{{student.name}}</td>
+        <td> <a routerLink='/students/{{student.id}}' class="btn btn-primary" role="button">See Details</a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,61 @@
+<div class="container">
+  <div class="jumbotron">
+    Add Lecture
+
+    <form invalidate [formGroup]="form" (ngSubmit)="addLecture(form)">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input formControlName="name" type="text" class="form-control" placeholder="Lecture Name">
+      </div>
+      <div *ngIf="form.get('name').invalid && form.get('name').touched" class="alert alert-danger">
+        <div *ngIf="form.get('name').hasError('required')">
+          Name is required
+        </div>
+      </div>
+
+      
+
+      <div class="form-group">
+          <label for="subjectSelect">Subject:</label>
+          <select (change)="selectSubject($event)" class="form-control"  name="subjectId">
+            <option value="">--Select Subject--</option>
+              <option *ngFor="let subject of subjects"  name="subjectId" [value]="subject.id">{{subject.name}}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+            <label for="teacherSelect">Teacher:</label>
+            <select  (change)="selectTeacher($event)" class="form-control"  name="teacherId">
+                <option value="">--Select Teacher--</option>
+              <option *ngFor="let teacher of teachers"  name="teacherId"[value]="teacher.id">{{teacher.name}}</option>
+            </select>
+        </div>
+
+     
+
+      <button type="submit" [disabled]="form.invalid" class="btn btn-success">Add Lecture</button>
+      <!-- Button is disabled till the input is invalid -->
+    </form>
+  </div>
+  <div class="row"  style="margin-left: 70px">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Batch Name</th>
+          <th>Subject</th>
+          <th>Teacher</th>
+          
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let lecture of lectures">
+          <td>{{lecture.name}}</td>
+          <td>{{lecture.subject.name}}</td>
+          <td>{{lecture.teacher.name}}</td>
+          
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+

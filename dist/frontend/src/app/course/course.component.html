@@ -1,0 +1,37 @@
+<div class="container">
+
+ 
+    <div class="jumbotron">
+      <h2>Add Course</h2>
+      <form invalidate [formGroup]="form" (ngSubmit)="addCourse(form)">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input formControlName="name" type="text" class="form-control">
+        </div>
+        <div *ngIf="form.get('name').invalid && form.get('name').touched" class="alert alert-danger">
+          <div *ngIf="form.get('name').hasError('required')">
+            Name is required
+          </div>
+        </div>  
+        <button type="submit" [disabled]="form.invalid" class="btn btn-success">Add Course</button>
+        <!-- Button is disabled till the input is invalid -->
+      </form>
+    </div>
+
+  
+
+
+
+  <div class="row" id="batchesListing" style="margin-left: 70px">
+
+    <div class="card" style="width: 18rem;margin: 5px;" *ngFor="let course of courses">
+      <div class="card text-center">
+        <div class="card-header">
+          <h5 class="card-title">{{course.name}}</h5>
+
+        </div>
+        <a routerLink='/batch/{{course.id}}' class="btn btn-info" role="button">Add Batch</a>
+      </div>
+    </div>
+  </div>
+</div>

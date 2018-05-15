@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="jumbotron">
+    <h2>Student Details</h2>
+
+    <p>
+      <b>Name:</b> {{student.name}}</p>
+    <p>
+      <b>Course:</b>
+      {{student.course.name}}</p>
+
+    <p>
+      <b>Batch:</b>
+    </p>
+    <li *ngFor="let batch of student.batches">{{batch.name}}</li>
+
+    <h2>Available Batches :</h2>
+    <div class="form-group">
+        
+        <select (change)="selectBatch($event)" class="form-control"  name="bachId">
+          <option value="">--Select Batch--</option>
+            <option *ngFor="let batch of batches"  name="batchId" [value]="batch.id">{{batch.name}}</option>
+        </select>
+      </div>
+
+      <button class="btn btn-primary" (click)="enrollBatch()">Enroll Batch</button>
+
+  </div>
+</div>
