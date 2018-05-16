@@ -1,6 +1,6 @@
 <div class="container">
   <div class="jumbotron">
-    <h2>Add Batch</h2>
+
     <form invalidate [formGroup]="form" (ngSubmit)="addBatch(form)">
       <div class="form-group">
         <label for="name">Name</label>
@@ -34,8 +34,8 @@
           <h5 class="card-title">{{batch.name}}</h5>
 
         </div>
-        <a routerLink='/courses/{{batch.courseId}}/batches/{{batch.id}}/lectures' class="btn btn-info" role="button"> Lectures</a>
-         <!-- <a routerLink='/batch/{{batch.courseId}}/students' class="btn btn-info" role="button">Show Lectures</a> -->
+        <a routerLink='/courses/{{batch.courseId}}/batches/{{batch.id}}/lectures' class="btn btn-info" role="button">Add Lectures</a>
+        <a routerLink='/courses/{{batch.courseId}}/batches/{{batch.id}}/students' class="btn btn-primary" role="button">Show Students</a>
       </div>
     </div>
   </div>

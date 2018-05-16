@@ -21,6 +21,7 @@ import { TeacherService } from './teacher/teacher.service';
 import { StudentService } from './student/student.service';
 import { StudentDetailComponent } from './student/student-detail/student-detail.component';
 import { CourseService } from './course/course.service';
+import { ShowStudentsByBatchComponent } from './batch/show-students-by-batch/show-students-by-batch.component';
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import { CourseService } from './course/course.service';
     TeacherComponent,
     HomeComponent,
     StudentDetailComponent,
+    ShowStudentsByBatchComponent
  
   ],
   imports: [
@@ -44,6 +46,7 @@ import { CourseService } from './course/course.service';
     RouterModule.forRoot([
       { path: 'courses', component: CourseComponent },
       {path:'courses/:courseId/batches/:batchId/lectures',component:LectureComponent},
+      {path:'courses/:courseId/batches/:batchId/students',component:ShowStudentsByBatchComponent},
       { path: 'batch/:id', component: BatchComponent },
       { path: 'students', component: StudentComponent },
       { path: 'students/:id', component: StudentDetailComponent },

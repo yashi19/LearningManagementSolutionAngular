@@ -10,6 +10,7 @@ import { Student } from "./student";
 @Injectable()
 export class StudentService {
   private STUDENT_URL = "/students";
+  private COURSES_URL = "/courses";
 
   constructor(private http: HttpClient) {}
 
@@ -29,6 +30,11 @@ export class StudentService {
       })
       .catch(this.handleError);
   }
+
+  showStudentsByBatch(courseId, batchId) {
+    return this.http.get(this.COURSES_URL + "/" + courseId + "/batches/" + batchId + "/students").catch(this.handleError)
+  }
+
 
 
   enrollBatch(studentId,batchId){

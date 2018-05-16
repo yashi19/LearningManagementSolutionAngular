@@ -1,0 +1,17 @@
+<div class="row">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Student Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let batchstudent of batchStudents">
+        <div *ngFor='let student of batchstudent.students'>
+            <td>{{student.name}}</td>
+        </div>
+      
+      </tr>
+    </tbody>
+  </table>
+</div>
